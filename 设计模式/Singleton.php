@@ -9,7 +9,7 @@
  *   二是它必须自行创建这个实例；
  *   三是它必须自行向整个系统提供这个实例。
  */
-class Singleton
+class Single
 {
     private static $_instance;
     private static $db;
@@ -25,7 +25,7 @@ class Singleton
         var_dump(isset(self::$_instance));
         var_dump(self::$db);
         if(!isset(self::$_instance)){//如果已经new 实例化过，直接返回实例化的结果。
-            self::$_instance = new Singleton();
+            self::$_instance = new Single();
         }
         return self::$_instance;
     }
@@ -35,10 +35,10 @@ class Singleton
     }
 }
 
-//$sign = new Singleton(); //报错 因为__construct 为私有
-$n1 =   Singleton::getInstance();
-$n1 = Singleton::getInstance();
-$n1 = Singleton::getInstance();
+//$sign = new Single(); //报错 因为__construct 为私有
+$n1 =   Single::getInstance();
+$n1 = Single::getInstance();
+$n1 = Single::getInstance();
 $n1->test();
 $n1->test();
 $n1->test();
@@ -48,4 +48,3 @@ $n1->test();
 //bool(true)
 //第一次被实例化之后 后续不再被实例化
 
-die;
